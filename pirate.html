@@ -14,6 +14,7 @@
 <style>
     h1 {
         text-shadow: 2px 2px 8px orangered;
+        text-decoration: underline;
     }
     body {
             text-align: center;
@@ -22,16 +23,32 @@
             padding: 0;
         }
         .rono {
-         text-decoration: underline;
          color:slategray;
+         border-width: 2px;
+         border-radius: 50px;
+         border-top-style: dotted;
+         border-right-style: solid;
+         border-bottom-style: dotted;
+         border-left-style: solid;
         }
         .rona {
-            text-decoration: underline;
-            color:olive;
+          
+         color:olive;
+         border-width: 2px;
+         border-radius: 50px;
+         border-top-style: dotted;
+         border-right-style: solid;
+         border-bottom-style: dotted;
+         border-left-style: solid;
         }
         #locations, #penalty, #help {
-            font-weight: bold;
-            text-decoration: underline;
+         font-weight: bold;
+         border-width: 2px;
+         border-radius: 50px;
+         border-top-style: dotted;
+         border-right-style: solid;
+         border-bottom-style: dotted;
+         border-left-style: solid;
         }
         #locations {
             color: blue;
@@ -44,6 +61,33 @@
         #penalty {
             color: greenyellow;
             cursor: pointer;
+        }
+        .game-field {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 5px auto;
+            width: 30%;
+         }
+         .location {
+            width: 65px;
+            height: 65px;
+            border: 1px solid #000;
+            background-color: #fff;
+            text-align: center;
+            background-image: url('./hidtreasure.webp');
+            background-size: cover;
+        }
+        .treasure {
+            background-image: url('./treasure.avif'); 
+        }
+
+        .trap {
+            background-image: url('./trap.webp');
+        }
+
+        .pirate-related {
+            background-image: url('./hat.webp'); 
         }
         .game-field {
             display: grid;
