@@ -21,8 +21,17 @@
             margin: 0;
             padding: 0;
         }
+        .rono {
+         text-decoration: underline;
+         color:slategray;
+        }
+        .rona {
+            text-decoration: underline;
+            color:olive;
+        }
         #locations, #penalty, #help {
             font-weight: bold;
+            text-decoration: underline;
         }
         #locations {
             color: blue;
@@ -67,12 +76,11 @@
 </head>
 <body>
   <h1>Find the treasure by Maheswar Reddy Polam</h1> 
-  <div>Click on the locations to search for treasure, beware the traps.</div> 
+  <div class="rono">Click on the locations to search for treasure, beware the traps.</div> 
   <div id="locations">Number of locations checked is zero.</div> 
   <div id="penalty">Penalty is zero</div> 
-  <div>Click for help.</div>
+  <div class="rona">Click for help.</div>
   <div id="help">Help report</div> <br>
-
   <div class="game-field">
    
     <div class="location"></div>
