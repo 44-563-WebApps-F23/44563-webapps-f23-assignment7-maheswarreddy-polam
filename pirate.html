@@ -53,10 +53,12 @@
         #locations {
             color: blue;
             cursor: pointer;
+
         }
         #help {
             color: green;
             cursor: pointer;
+            
         }
         #penalty {
             color: greenyellow;
@@ -68,16 +70,8 @@
             gap: 10px;
             margin: 5px auto;
             width: 30%;
-         }
-         .location {
-            width: 65px;
-            height: 65px;
-            border: 1px solid #000;
-            background-color: #fff;
-            text-align: center;
-            background-image: url('./hidtreasure.webp');
-            background-size: cover;
         }
+        
         .treasure {
             background-image: url('./treasure.avif'); 
         }
@@ -116,46 +110,174 @@
         .pirate-related {
             background-image: url('./hat.webp'); 
         }
+        .flex-container {
+      display: flex;  flex-direction:row;
+  }
 </style>
 </head>
 <body>
-  <h1>Find the treasure by Maheswar Reddy Polam</h1> 
-  <div class="rono">Click on the locations to search for treasure, beware the traps.</div> 
-  <div id="locations">Number of locations checked is zero.</div> 
-  <div id="penalty">Penalty is zero</div> 
-  <div class="rona">Click for help.</div>
-  <div id="help">Help report</div> <br>
-  <div class="game-field">
-   
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
-    
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
+<script>
+    const imgArr = ["img1", "img2", "img3", "img4", "img5", "img6", "img7", "img8", "img9", "img10", "img11", "img12", "img13", "img14", "img15", "img16", "img17", "img18", "img19", "img20", "img21", "img22", "img23", "img24","img25"]
+    let checkCount = 0
+    let penalty = 0
+    let lastCheck = 0
+    let treasureLocation = 5
+    let trapLocation = 18
+    let gameOver = false
 
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
+    function check(position){
+        if(!gameOver){
+            let idPos = document.getElementById(imgArr[position])
+           console.log(idPos)
 
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
+           if(position == treasureLocation){
+                idPos.src = "./treasure.avif"
+                gameOver = true
+                penalty = penalty - 3
+                
+           }else if(position==trapLocation){
+                idPos.src = "./trap.webp"
+                gameOver = true
+                penalty = penalty + 4
+           }else{
+                idPos.src = "./hat.webp"
+                penalty = penalty + 1
+           }
+           
+           checkCount = checkCount + 1
 
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
-    <div class="location"></div>
-</div>
+           lastCheck = position
+
+           document.getElementById('penalty').innerHTML = `penalty is ${penalty}`
+
+        }
+    }
+
+
+    function help(){
+        let row = Math.floor(lastCheck / 5)
+        let col = Math.floor(lastCheck % 5)
+
+        if (row - col === 1 || col-row === 1){
+            document.getElementById('help').innerHTML =  "Can smell it"
+        }
+
+        let treasureRow = Math.floor(treasureLocation/5)
+        let treasureCol = Math.floor(treasureLocation % 5)
+
+        if (Math.abs(treasureRow - row) + Math.abs(treasureCol-col) === 1){
+            document.getElementById('help').innerHTML =  "Can smell it"
+        }else if(Math.abs(treasureRow - row) + Math.abs(treasureCol-col) === 2){
+            document.getElementById('help').innerHTML =  "Close Matie"
+        }else{
+            document.getElementById('help').innerHTML = "Step Faster"
+        }
+        penalty = penalty+2
+        document.getElementById('penalty').innerHTML = "penalty is "+ penalty
+
+    }
+</script>
+
+<h1>Find the treasure by Maheswar Reddy Polam</h1> 
+<div class="rono">Click on the locations to search for treasure, beware the traps.</div> 
+<div id="locations">Number of locations checked is zero.</div> 
+<div id="penalty">Penalty is zero</div> 
+<div class="rona">Click for help.</div>
+<div id="help">Help report</div> <br>
+<div class="game-field">
+<div class="flex-container">
+    <div class="row">
+      <div class="col">
+        <img id="img1" onclick="check(0)"  src="./hidtreasure.webp" height="70" width="70">
+      </div>
+      <div class="col">
+        <img id="img2" onclick="check(1)" src="./hidtreasure.webp" height="70" width="70">
+      </div>
+      <div class="col">
+        <img id="img3" onclick="check(2)" src="./hidtreasure.webp" height="70" width="70">
+      </div>
+      <div class="col">
+        <img id="img4" onclick="check(3)" src="./hidtreasure.webp" height="70" width="70">
+      </div>
+      <div class="col">
+        <img id="img5" onclick="check(4)" src="./hidtreasure.webp" height="70" width="70">
+      </div>
+    </div>
+   <br>
+
+    <div class="row">
+        <div class="col">
+          <img id="img6" onclick="check(5)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img7" onclick="check(6)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img8" onclick="check(7)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img9" onclick="check(8)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img10" onclick="check(9)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+    </div>
+    <br>
+
+      <div class="row">
+        <div class="col">
+          <img id="img11" onclick="check(10)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img12" onclick="check(11)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img13" onclick="check(12)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img14" onclick="check(13)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img15" onclick="check(14)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+      </div>
+    <br>
+
+      <div class="row">
+        <div class="col">
+          <img id="img16" onclick="check(15)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img17" onclick="check(16)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img18" onclick="check(17)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img19" onclick="check(18)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img20" onclick="check(19)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+      </div>
+    <br>
+
+      <div class="row">
+        <div class="col">
+          <img id="img21" onclick="check(20)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img22" onclick="check(21)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img23" onclick="check(22)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img24" onclick="check(23)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+        <div class="col">
+          <img id="img25" onclick="check(24)" src="./hidtreasure.webp" height="70" width="70">
+        </div>
+      </div>
 </body>
 </html>
