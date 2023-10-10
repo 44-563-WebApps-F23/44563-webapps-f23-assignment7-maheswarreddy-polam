@@ -8,6 +8,19 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    .btnclr {
+      color: green;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    body {
+      margin-left: 15px;
+    }
+    h1 {
+        text-shadow: 2px 2px 8px orangered;
+        text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
@@ -18,8 +31,8 @@
     <div id="counter">Count</div>
 
 
-  <input id ="start-button" type="button" value="Start Timer">
-  <input id="react-button" type ="button" value="React">
+  <input id ="start-button" class="btnclr" type="button" value="Start Timer">
+  <input id="react-button" class="btnclr" type ="button" value="React">
   
   <script> 
   var reactTime = undefined;
@@ -30,5 +43,31 @@ function recordTime()
     console.log("React time recorded:", reactTime);
 }
 document.getElementById("react-button").onclick = recordTime;
+function startTime() {
+  
+    for (var i = 0; i < 9; i++) {
+     
+        setTimeout(function (count) {
+            return function () {
+                document.getElementById("counter").innerHTML = count;
+            };
+        }(i), (8 - i) * 1000);
+    }
+
+    setTimeout(function () {
+      
+        if (typeof reactTime === "undefined") {
+        
+            document.getElementById("target").innerHTML = "Too Slow";
+        } else {
+            var endTime = Date.now();
+            var elapsedTime = endTime - reactTime;
+
+            document.getElementById("target").innerHTML = "Time was " + elapsedTime + "ms";
+        }
+    }, 8000);
+}
+document.getElementById("start-button").onclick = startTime;
+  </script>
 </body>
 </html>
