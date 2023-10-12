@@ -51,7 +51,7 @@ document.getElementById("react-button").onclick = recordTime;
 function startTime() {
   
     for (var i = 0; i < 9; i++) {
-     
+     var count = Math.floor(Math.random()*9)+2
         setTimeout(function (count) {
             return function () {
                 document.getElementById("counter").innerHTML = count;
@@ -73,6 +73,8 @@ function startTime() {
     }, 8000);
 }
 document.getElementById("start-button").onclick = startTime;
+
+
   </script>
 </body>
 </html>

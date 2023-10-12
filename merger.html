@@ -70,6 +70,19 @@
   color: white;
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
+.button3 {
+  transition-duration: 0.4s;
+  height: 28px;
+  width:80px;
+  font-family:cursive;
+  box-shadow: 0 15px 25px 0 rgba(0,0,0,0.2), 0 15px 30px 0 rgba(0,0,0,0.19);
+}
+
+.button3:hover {
+  background-color: yellowgreen;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
 .border{
     border-radius: 50px 20px;  
      }
@@ -90,7 +103,7 @@
 	<input type ="button" class="button" id ="addEndButton"  value ="Add end">
 	<input type ="button" class="button1" id ="addFrontButton"  value ="Add Front">
 	<input type ="button" class="button2" id ="removeButton"  value ="Remove">
-
+	<input type ="button" class="button3" id ="swap"  value ="swap" onclick="swap()">
 
 </body>
 <script>
@@ -131,5 +144,30 @@ document.getElementById("removeButton").addEventListener("click", function () {
 
 		container.insertBefore(newDiv, container.firstChild);
 	});
+	function swap()
+	{
+
+let mergerItems = document.getElementsByClassName("merger");
+
+let container = document.getElementById("target");
+
+let element1 = Math.floor(Math.random()*mergerItems.length);
+
+let element2 = Math.floor(Math.random()*mergerItems.length);
+
+let firstInnerText = document.getElementsByClassName("merger")[element1];
+
+let secondInnerText = document.getElementsByClassName("merger")[element2];
+
+if (mergerItems.length > 1) {
+
+    let temp = firstInnerText.innerHTML;
+
+    firstInnerText.innerHTML = secondInnerText.innerHTML;
+
+    secondInnerText.innerHTML = temp;
+
+}
+	}
 </script>
 </html>	
